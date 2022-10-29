@@ -1,20 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <AssemblyName>EightQueens</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Extensions\" />
+    <None Remove="Interfaces\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Extensions\" />
+    <Folder Include="Interfaces\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Chess.Model\Chess.Model.csproj" />
+    <Compile Remove="Interfaces\ICrossPiece.cs" />
+    <Compile Remove="Interfaces\IDiagonalPiece.cs" />
   </ItemGroup>
 </Project>
