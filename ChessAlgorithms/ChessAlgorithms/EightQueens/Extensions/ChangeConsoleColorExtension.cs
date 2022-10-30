@@ -18,7 +18,7 @@ public static class ChangeConsoleColorExtension
     {
         if (slot.IsEmpty)
         {
-            Console.ForegroundColor = slot.IsDangerous ? ConsoleColor.Yellow : ConsoleColor.DarkGreen;
+            Console.ForegroundColor = slot.IsDangerous ? ConsoleColor.DarkRed : ConsoleColor.DarkGreen;
         }
         else
         {

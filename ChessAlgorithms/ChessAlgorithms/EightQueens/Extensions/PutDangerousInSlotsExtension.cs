@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Numerics;
 using Chess.Model;
 
@@ -10,59 +11,17 @@ public static class PutDangerousInSlotsExtension
     {
         var size = board.SquadSize;
         var slots = board.Slots;
-        var x = (int) position.X;
-        var y = (int) position.Y;
 
-        for (int z = 0; z < size; z++)
+        for (int x = 0; x < size; x++)
         {
-            if (slots[x, z].IsEmpty)
+            for (int y = 0; y < size; y++)
             {
-                slots[x, z].IsDangerous = true;
+                var actualSlot = slots[(int)position.X, (int)position.Y];
+                var slot = slots[x, y];
+
+                if (actualSlot.Content?.CanMoveToLocal(position, new Vector2(x, y), size) ?? false)
+                    slot.IsDangerous = true;
             }
-        }
-        for (int z = 0; z < size; z++)
-        {
-            if (slots[z, y].IsEmpty)
-            {
-                slots[z, y].IsDangerous = true;
-            }
-        }
-
-        int row = 0;
-        int col = y - x;
-
-        while (row < 0 || col < 0)
-        {
-            row++;
-            col++;
-        }
-
-        while (row < 8 && col < 8)
-        {
-            if (slots[row, col].IsEmpty)
-                slots[row, col].IsDangerous = true;
-
-            row++;
-            col++;
-        }
-
-        row = y + x;
-        col = 0;
-
-        while (row > 7 || col > 7)
-        {
-            row--;
-            col++;
-        }
-
-        while (row >= 0 && col < 8)
-        {
-            if (slots[row, col].IsEmpty)
-                slots[row, col].IsDangerous = true;
-
-            row--;
-            col++;
         }
     }
 }
-

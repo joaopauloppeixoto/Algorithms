@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Numerics;
 using Chess.Model.Interfaces;
 
 namespace Chess.Model;
@@ -10,7 +11,7 @@ public class PawnPiece : IPiece
 
 	}
 
-    public bool CanMoveToLocal()
+    public bool CanMoveToLocal(Vector2 originalPosition, Vector2 destinyPosition, int squadSize)
     {
         throw new NotImplementedException();
     }
